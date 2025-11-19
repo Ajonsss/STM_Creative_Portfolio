@@ -1,1 +1,277 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'sf';
+  src: url(/vite-project/src/assets/fonts/SFLIGHT.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'go';
+  src: url(../src/assets/fonts/PRODUCT\ SANS\ REGULAR.TTF) format('opentype');
+}
+
+@font-face {
+  font-family: 'bb';
+  src: url(../src/assets/fonts/BBHSansBartle-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'sfh';
+  src: url(../src/assets/fonts/SFUITEXT-HEAVY.OTF) format('opentype');
+}
+
+@theme {
+  --drop-shadow-3xl: 0 8px 16px rgba(0, 0, 0, 0.08),
+                     0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.input {
+    @apply
+    border-1
+    border-white
+    rounded-full
+    px-5
+    py-2
+    mx-1
+    bg-white/40 
+    backdrop-blur-md
+    text-white
+}
+
+.submit{
+    @apply
+    border-1
+    border-white
+    rounded-full
+    px-5
+    py-2
+    mx-1
+    bg-white/40 
+    backdrop-blur-md
+    text-white
+}
+
+.body {
+    @apply
+    mx-2
+}
+
+.bg {
+    @apply
+    fixed 
+    inset-0 
+    z-0 
+    bg-cover 
+    
+}
+
+.main {
+    @apply
+    border-1
+    
+}
+
+.mainnav {
+    font-family: 'sf', sans-serif;
+    @apply
+    bg-[#3D3D3D]/40 
+    backdrop-blur-md 
+    flex
+    shadow-lg
+    fixed
+    w-[100%]
+    z-50
+    px-2
+    py-2
+}
+
+.nava {
+    @apply
+    flex
+    w-full
+    p-2
+    items-center
+    justify-center
+}
+
+.nava a {
+    @apply
+    px-5
+    py-2
+    text-[13px]
+    text-white
+    border-1
+    rounded-full
+    border-white/0
+    drop-shadow-2xl
+    transition-all
+    duration-300
+    bg-[#E7E7E7]/30
+    mx-1
+    hover:rounded-full
+    hover:border-1
+    hover:border-white
+}
+
+.nava h1 {
+    @apply
+    px-5
+    py-2
+    text-[13px]
+    text-white
+    rounded-full
+    border-1
+    border-white
+    bg-[#E7E7E7]/30
+}
+
+/*Station One*/
+
+.stationone {
+    @apply
+    h-screen
+    py-30
+    px-40
+    bg-[#302f2c]
+    drop-shadow-3xl
+    bg-fixed
+    sticky top-0
+}
+
+.stationone p {
+    font-family: 'sf', sans-serif;
+    @apply
+    text-[30px]
+    text-right
+    text-white
+}
+
+.stationone h1 {
+    font-family: 'sfh', sans-serif;
+    @apply
+    text-[240px]/50
+    h-fit
+    text-[#efede3]
+    mb-[40px]
+}
+
+/*Station Two*/
+
+.mainnavtwo {
+    @apply
+    h-screen
+    pt-[100px]
+    px-10
+    text-center
+    bg-fixed
+    sticky top-0
+}
+
+.offer {
+    font-family: 'sf', sans-serif;
+    @apply
+    w-fit
+    text-[40px]
+    py-[10px]
+    px-[40px]
+    mb-[20px]
+    text-white
+    backdrop-blur-lg
+    bg-white/40
+    rounded-full
+    text-shadow-lg
+}
+
+.services {
+    @apply
+    grid 
+    grid-cols-3
+    gap-2
+    p-5
+    backdrop-blur-lg
+    
+    rounded-[60px]
+    border-1
+    border-white/50
+}
+
+.cardone  {
+    @apply
+    p-5
+    rounded-[50px]
+    col-span-1
+    text-[20px]
+    backdrop-blur-lg
+    bg-white/20
+    border-white/50
+    border-1
+    flex
+}
+
+
+
+.cardone img {
+    @apply
+    rounded-[30px]
+    w-1/2
+}
+
+.cardoption {
+    @apply
+    border-1
+    border-white/30
+    w-100
+    h-fit
+    p-[20px]
+    ml-[10px]
+    text-left
+    rounded-[30px]
+    backdrop-blur-lg
+    bg-white/20
+    drop-shadow-3xl
+}
+
+.cardoption h1{
+    font-family: 'sf', sans-serif;
+    @apply
+    text-[25px]
+    
+}
+
+.cardoption h2{
+    font-family: 'sf', sans-serif;
+    @apply
+    text-[20px]
+}
+
+.cardoption h3 {
+    font-family: 'sf', sans-serif;
+    @apply
+    text-[15px]
+}
+
+/*Station Three*/
+
+.mainnavthree {
+    @apply
+    h-fit
+    pt-[100px]
+    px-10
+    pb-[50px]
+    bg-black
+    backdrop-blur-lg
+    bg-fixed
+    
+}
+
+.workdone {
+    @apply
+    grid 
+    grid-cols-3
+    gap-4
+    p-5
+    mb-[50px]
+    backdrop-blur-lg
+    bg-white/20
+    rounded-[40px]
+}

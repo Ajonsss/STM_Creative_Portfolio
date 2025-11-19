@@ -1,19 +1,23 @@
 import check from "../assets/check.png"
+import logo from "../assets/logo.png"
+import {useState} from "react";
 
-const Header = ({name}) => {
+
+const Header = () => {
+
+    const [Title, setTitle] = useState('');
 
     return(
         <>
-        <header className="m-2 bg-[#0096FF] flex p-4 rounded-lg">
-            <div className="font-black text-[20px] flex w-1/2">
-                <img src={check} alt="" className="w-[30px] h-[30px]"/>
-                <a href="">Home</a>
-                <h1 className="pl-2">Printing Service</h1>
-            </div>
-            <div className="w-1/2">
-                <h1 className="font-bold text-[20px] text-right pl-8">Hello {name}!</h1>
-            </div>
-        </header>
+        <div className="mainnav">
+            <div className="nava">
+                <a href="">About Me</a>
+                <a href="">Projects</a>
+                <a href="">Get in Touch</a>
+                <input className="input" type="text" name="name" onChange={(e) => setTitle(e.target.value)}/>
+                <h1>Hello {Title}!</h1>
+             </div>
+        </div>
         </>
 
     );
