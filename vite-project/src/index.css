@@ -1,277 +1,635 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "tailwindcss";
 
+/* 1. SF Pro Display (Regular) */
 @font-face {
-  font-family: 'sf';
-  src: url(/vite-project/src/assets/fonts/SFLIGHT.ttf) format('truetype');
+  font-family: 'SF Pro Display';
+  src: url('./assets/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
+/* 2. SF UI Text (Bold) */
 @font-face {
-  font-family: 'go';
-  src: url(../src/assets/fonts/PRODUCT\ SANS\ REGULAR.TTF) format('opentype');
+  font-family: 'SF';
+  src: url('./assets/fonts/SFUITEXT-HEAVY.OTF') format('opentype');
+  font-weight: bold;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: 'bb';
-  src: url(../src/assets/fonts/BBHSansBartle-Regular.ttf) format('truetype');
+/* --- Variables & Base Setup --- */
+:root {
+  --primary-color: #4f46e5;
+  --secondary-color: #9333ea;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --bg-light: #f9fafb;
+  --white: #ffffff;
 }
 
-@font-face {
-  font-family: 'sfh';
-  src: url(../src/assets/fonts/SFUITEXT-HEAVY.OTF) format('opentype');
+/* Base Body Styles */
+body {
+  @apply   text-[var(--text-dark)] min-h-screen;
+  background-image:
+    url('./assets/images/BG.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-@theme {
-  --drop-shadow-3xl: 0 8px 16px rgba(0, 0, 0, 0.08),
-                     0 2px 4px rgba(0, 0, 0, 0.06);
-}
+@layer components {
 
-.input {
+  /* --- Navbar --- */
+  .navbar {
     @apply
-    border-1
-    border-white
-    rounded-full
-    px-5
-    py-2
-    mx-1
-    bg-white/40 
-    backdrop-blur-md
-    text-white
-}
-
-.submit{
-    @apply
-    border-1
-    border-white
-    rounded-full
-    px-5
-    py-2
-    mx-1
-    bg-white/40 
-    backdrop-blur-md
-    text-white
-}
-
-.body {
-    @apply
-    mx-2
-}
-
-.bg {
-    @apply
-    fixed 
-    inset-0 
-    z-0 
-    bg-cover 
-    
-}
-
-.main {
-    @apply
-    border-1
-    
-}
-
-.mainnav {
-    font-family: 'sf', sans-serif;
-    @apply
-    bg-[#3D3D3D]/40 
+    fixed  
+    w-full 
+    bg-[rgba(255,255,255,0.212)] 
     backdrop-blur-md 
-    flex
-    shadow-lg
-    fixed
-    w-[100%]
-    z-50
-    px-2
-    py-2
-}
+    shadow-sm z-[1000] 
+    transition-all 
+    duration-300;
+  }
 
-.nava {
-    @apply
-    flex
-    w-full
-    p-2
-    items-center
-    justify-center
-}
+  .navbar-container {
+    @apply 
+    max-w-6xl 
+    mx-auto 
+    px-6 
+    py-4 
+    flex 
+    justify-center 
+    items-center;
+  }
 
-.nava a {
-    @apply
-    px-5
-    py-2
-    text-[13px]
+  .logo {
+    @apply text-xl font-bold text-[var(--primary-color)];
+  }
+
+  .nav-links button {
+    font-family: 'SF Pro Display', sans-serif;
+    @apply 
+    bg-white/20
+    backdrop-blur-md
+    px-6 
+    py-2 
+    rounded-full 
+    border-none 
+    mx-4 
+    text-[#343434] 
+    font-medium 
+    cursor-pointer 
+    transition-all 
+    duration-200 
+    text-base;
+  }
+
+  .nav-links button:hover {
+    @apply 
     text-white
-    border-1
+    bg-[#007AFF];
+  }
+
+  /* --- Hero --- */
+  .hero-section {
+    @apply 
+    h-screen 
+    flex 
+    flex-col 
+    justify-center 
+    items-center 
+    text-center 
+    px-4
+    bg-white/10
+    backdrop-blur-[5px];
+  }
+
+  .hero-title {
+    font-family: 'SF', sans-serif;
+    @apply 
+    text-[150px]
+    font-black 
+    mb-9
+    p-5 
+    bg-gradient-to-r 
+    from-[var(--primary-color)] to-[var(--secondary-color)] 
+    bg-clip-text text-transparent;
+  }
+
+  .hero-subtitle {
+    font-family: 'SF Pro Display', sans-serif;
+    @apply 
+    text-2xl 
+    text-[#343434] 
+    tracking-widest 
+    uppercase;
+  }
+
+  /* --- Generic Layouts --- */
+  .section {
+    @apply py-20;
+  }
+
+  .container {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  .section-title {
+    font-family: 'SF', sans-serif;
+    @apply 
+    text-[50px] 
+    mb-10 
+    border-l-[3px] 
+    border-[#007AFF] 
+    pl-4 
+    text-[var(--text-dark)];
+  }
+
+  .grid {
+    @apply grid gap-6;
+  }
+
+  /* --- Skills --- */
+  .skills-section {
+    @apply bg-white/60
+    backdrop-blur-md;
+  }
+
+  .skills-grid {
+    @apply 
+    grid-cols-[repeat(auto-fit,minmax(250px,1fr))];
+  }
+
+  .skill-card {
+    @apply 
+    p-6 
+    bg-white 
+    border 
+    border-gray-200
+    rounded-[40px]
+    shadow-md 
+    transition-all 
+    duration-300 
+    ease-in-out;
+  }
+
+  .skill-card:hover {
+    @apply -translate-y-1 shadow-xl;
+  }
+
+  .skill-card h3 {
+    @apply text-xl text-[var(--text-dark)];
+  }
+
+  .skill-card span {
+    @apply text-xs font-semibold text-[var(--primary-color)] uppercase tracking-wide;
+  }
+
+  /* --- Portfolio --- */
+  .portfolio-section {
+    @apply bg-white/20;
+  }
+
+  .portfolio-grid {
+    @apply grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8;
+  }
+
+  .portfolio-card {
+    @apply bg-white rounded-2xl overflow-hidden shadow-md cursor-pointer transition-shadow duration-300;
+  }
+
+  .portfolio-card:hover {
+    @apply shadow-2xl;
+  }
+
+  .card-image-wrapper {
+    @apply h-48 overflow-hidden;
+  }
+
+  .card-image-wrapper img {
+    @apply w-full h-full object-cover transition-transform duration-500;
+  }
+
+  .portfolio-card:hover img {
+    @apply scale-110;
+  }
+
+  .card-content {
+    @apply p-6;
+  }
+
+  .card-content h3 {
+    @apply mb-2 text-xl ;
+  }
+
+  .card-content p {
+    @apply text-[var(--text-light)] text-sm ;
+  }
+
+  /* --- Modal --- */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-[2000] p-4;
+  }
+
+  .modal-content {
+    @apply bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl animate-[scaleUp_0.3s_ease-out];
+  }
+
+  .modal-content img {
+    @apply w-full h-[300px] object-cover;
+  }
+
+  .modal-body {
+    @apply p-8;
+  }
+
+  .modal-body h2 {
+    @apply text-3xl mb-2;
+  }
+
+  .modal-desc {
+    @apply text-[var(--text-light)] mb-6;
+  }
+
+  .modal-meta {
+    @apply flex gap-4 mb-4;
+  }
+
+  .meta-tag {
+    @apply bg-gray-100 px-3 py-1 rounded-full text-xs font-semibold text-[var(--primary-color)];
+  }
+
+  .close-btn {
+    @apply mt-8 px-6 py-3 bg-gray-900 text-white border-none rounded-full cursor-pointer transition-colors duration-200;
+  }
+
+  .close-btn:hover {
+    @apply bg-gray-700;
+  }
+
+  /* --- Admin Dashboard --- */
+  .admin-dashboard {
+    font-family: 'SF Pro Display', sans-serif;
+    @apply 
+    min-h-screen
+    p-10
+    text-[var(--text-dark)] min-h-screen;
+    background-image:
+        url('./assets/images/BG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .admin-container {
+    @apply 
+    max-w-[1500px] 
+    mx-auto 
+    bg-white/50
+    backdrop-blur-lg 
+    rounded-xl 
+    shadow-lg p-8;
+  }
+
+  .admin-header {
+    font-family: 'SF', sans-serif;
+    @apply 
+    flex 
+    justify-between 
+    items-center 
+    mb-8
+    text-[30px];
+  }
+
+  .logout-link {
+    @apply text-red-500 border-none bg-none cursor-pointer underline;
+  }
+
+  .admin-tabs {
+    @apply flex gap-4 mb-8 border-b border-gray-200;
+  }
+
+  .admin-tabs button {
+    @apply bg-none border-none p-4 font-semibold text-gray-500 cursor-pointer border-b-[3px] border-transparent;
+  }
+
+  .admin-tabs button.active {
+    @apply text-[var(--primary-color)] border-[var(--primary-color)];
+  }
+
+  .grid-2-col {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+  }
+
+  .admin-form h3 {
+    @apply border-b border-gray-200 pb-2 mb-4;
+  }
+
+  .form-input {
+    @apply 
+    w-full 
+    p-3 
+    pl-5
+    mb-4 
+    border 
+    border-white
+    rounded-full 
+    text-center
+    box-border 
+    text-base 
+    bg-white/30
+    focus:outline-none 
+    focus:border-transparent 
+    focus:ring-2 
+    focus:ring-[var(--primary-color)];
+  }
+
+  .input-label {
+    @apply 
+    block 
+    text-sm 
+    text-black 
+    mb-1;
+  }
+
+  .form-btn {
+    @apply 
+    w-full 
+    p-3 
+    bg-[var(--primary-color)] 
+    text-white 
+    border-none 
+    rounded-full 
+    cursor-pointer 
+    font-semibold 
+    hover:bg-[#007AFF];
+  }
+
+  /* --- Admin Lists --- */
+  .admin-list {
+    @apply 
+    mt-4;
+  }
+  
+  .list-item, .project-list-item {
+    @apply 
+    flex 
+    justify-between 
+    items-center 
+    p-1
+    bg-white/50
+    border 
+    border-white
+    mb-2 
+    rounded-[10px]
+    shadow-sm;
+  }
+
+  .project-list-item {
+    @apply gap-4;
+  }
+
+  .list-thumb {
+    @apply w-[60px] h-[60px] object-cover rounded bg-gray-100;
+  }
+
+  .list-info {
+    @apply flex-1;
+  }
+
+  .list-info strong {
+    @apply block text-base text-gray-800;
+  }
+
+  .list-info span {
+    @apply text-sm text-gray-500;
+  }
+
+  .item-actions, .list-actions {
+    @apply flex gap-2;
+  }
+
+  .edit-btn {
+    @apply 
+    px-4 
+    py-2 
+    bg-gray-100 
+    text-gray-700 
+    border 
+    border-gray-300 
     rounded-full
-    border-white/0
-    drop-shadow-2xl
+    cursor-pointer 
+    text-sm 
+    font-semibold 
+    transition-all 
+    hover:bg-gray-200 
+    hover:border-gray-400;
+  }
+
+  .delete-btn, .delete-icon {
+    @apply 
+    bg-red-100 
+    text-red-600 
+    border 
+    border-red-200 
+    cursor-pointer 
+    rounded-[2px]
     transition-all
-    duration-300
-    bg-[#E7E7E7]/30
-    mx-1
-    hover:rounded-full
-    hover:border-1
-    hover:border-white
-}
+  }
 
-.nava h1 {
+  .delete-btn {
+    @apply px-4 py-2 rounded-full text-sm font-semibold;
+  }
+
+  .delete-icon {
+    @apply bg-transparent border-none text-xl p-1;
+  }
+  
+  .cancel-btn {
+    @apply bg-gray-500 text-white border-none px-3 py-1 rounded text-xs cursor-pointer mr-4;
+  }
+
+  /* --- Login & Footer --- */
+  .footer {
+    font-family: 'SF Pro Display', sans-serif;
+    @apply 
+    bg-gray-900 
+    text-gray-400 
+    py-12 
+    text-center;
+  }
+
+  .footer-login-btn {
+    font-family: 'SF Pro Display', sans-serif;
     @apply
-    px-5
-    py-2
-    text-[13px]
-    text-white
+    bg-transparent 
+    border 
+    border-gray-700 
+    text-inherit 
+    px-6
+    py-2 
     rounded-full
+    cursor-pointer 
+    text-xs 
+    mt-4 
+    hover:bg-gray-700 
+    hover:text-white;
+  }
+
+  .modal-overlay .login-box {
+    font-family: 'SF Pro Display', sans-serif;
+    @apply 
+    bg-white/60
+    backdrop-blur-lg 
+    p-10 
+    rounded-[40px] 
+    w-[350px] 
+    relative 
+    shadow-lg;
+  }
+
+  .login-box h2 {
+    @apply
+    m-5
+    text-[20px]
+  }
+
+  .modal-close-icon {
+    @apply absolute top-4 right-4 bg-none border-none cursor-pointer text-xl text-gray-500;
+  }
+
+  .login-btn {
+    @apply bg-gray-900 mt-4;
+  }
+
+  /* --- About Section Specifics --- */
+  
+
+  .about-grid {
+    @apply grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 items-start;
+  }
+
+  .profile-card {
+    @apply 
+    text-center 
     border-1
     border-white
-    bg-[#E7E7E7]/30
-}
+    p-15 
+    bg-white/50
+    backdrop-blur-[100px]
+    rounded-[40px];
+  }
 
-/*Station One*/
+  .profile-img-container {
+    @apply 
+    w-[150px] 
+    h-[150px] 
+    mx-auto 
+    mb-6 
+    rounded-full 
+    overflow-hidden 
+    border-4 
+    border-white/50;
+  }
 
-.stationone {
-    @apply
-    h-screen
-    py-30
-    px-40
-    bg-[#302f2c]
-    drop-shadow-3xl
-    bg-fixed
-    sticky top-0
-}
+  .profile-img-container img {
+    @apply w-full h-full object-cover;
+  }
 
-.stationone p {
-    font-family: 'sf', sans-serif;
+  .profile-bio h3 {
+    font-family: 'SF', sans-serif;
+    @apply 
+    text-[var(--text-dark)]
+    mb-2 
+    text-[50px];
+  }
+
+  .profile-bio p {
+    font-family: 'SF Pro Display', sans-serif;
+    @apply 
+    text-[20px]
+    text-[#343434] 
+    leading-relaxed;
+  }
+
+  /* Timeline */
+  .timeline-block {
+    @apply mb-8;
+  }
+
+  .timeline-block h3 {
+    font-family: 'SF', sans-serif;
     @apply
     text-[30px]
-    text-right
-    text-white
-}
+    text-[var(--text-dark)] 
+    border-b-2 
+    border-gray-200 
+    pb-2 
+    mb-6;
+  }
 
-.stationone h1 {
-    font-family: 'sfh', sans-serif;
+  .timeline-item {
+    font-family: 'SF Pro Display', sans-serif;
     @apply
-    text-[240px]/50
-    h-fit
-    text-[#efede3]
-    mb-[40px]
-}
-
-/*Station Two*/
-
-.mainnavtwo {
-    @apply
-    h-screen
-    pt-[100px]
-    px-10
-    text-center
-    bg-fixed
-    sticky top-0
-}
-
-.offer {
-    font-family: 'sf', sans-serif;
-    @apply
-    w-fit
-    text-[40px]
-    py-[10px]
-    px-[40px]
-    mb-[20px]
-    text-white
+    text-[var(--text-dark)]
+    relative 
+    pl-10
+    pt-6 
+    border-l-2 
+    border-gray-200 
+    pb-6
+    bg-white/50
     backdrop-blur-lg
-    bg-white/40
-    rounded-full
-    text-shadow-lg
-}
-
-.services {
-    @apply
-    grid 
-    grid-cols-3
-    gap-2
-    p-5
-    backdrop-blur-lg
-    
-    rounded-[60px]
-    border-1
-    border-white/50
-}
-
-.cardone  {
-    @apply
-    p-5
-    rounded-[50px]
-    col-span-1
-    text-[20px]
-    backdrop-blur-lg
-    bg-white/20
-    border-white/50
-    border-1
-    flex
-}
-
-
-
-.cardone img {
-    @apply
-    rounded-[30px]
-    w-1/2
-}
-
-.cardoption {
-    @apply
-    border-1
-    border-white/30
-    w-100
-    h-fit
-    p-[20px]
-    ml-[10px]
-    text-left
-    rounded-[30px]
-    backdrop-blur-lg
-    bg-white/20
-    drop-shadow-3xl
-}
-
-.cardoption h1{
-    font-family: 'sf', sans-serif;
-    @apply
-    text-[25px]
-    
-}
-
-.cardoption h2{
-    font-family: 'sf', sans-serif;
-    @apply
-    text-[20px]
-}
-
-.cardoption h3 {
-    font-family: 'sf', sans-serif;
-    @apply
-    text-[15px]
-}
-
-/*Station Three*/
-
-.mainnavthree {
-    @apply
-    h-fit
-    pt-[100px]
-    px-10
-    pb-[50px]
-    bg-black
-    backdrop-blur-lg
-    bg-fixed
-    
-}
-
-.workdone {
-    @apply
-    grid 
-    grid-cols-3
-    gap-4
-    p-5
-    mb-[50px]
-    backdrop-blur-lg
-    bg-white/20
     rounded-[40px]
+    
+    mb-3;
+  }
+
+  .timeline-item::before {
+    content: '';
+    @apply absolute -left-[5px]  w-[10px] h-[10px] rounded-full bg-[var(--primary-color)];
+  }
+
+  .timeline-date {
+    font-family: 'SF', sans-serif;
+    @apply
+    text-[var(--text-dark)]
+    text-[20px]
+    font-semibold 
+    block 
+    mb-1
+    pl-5;
+  }
+
+  .timeline-item h4 {
+    font-family: 'SF', sans-serif;
+    @apply
+    text-[var(--text-dark)]  
+    text-[30px];
+  }
+
+  .timeline-sub {
+    @apply 
+    text-sm 
+    text-gray-600  
+    block 
+    mb-2
+    pl-5;
+  }
+
+  .timeline-item p {
+    @apply  
+    text-[15px]
+    pl-5;
+  }
+}
+
+/* Keyframes need to stay outside @layer usually, or work natively if supported */
+@keyframes scaleUp {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
