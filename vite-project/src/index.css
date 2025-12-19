@@ -3,6 +3,14 @@
 @tailwind utilities;
 @import "tailwindcss";
 
+body {
+  font-family: 'SF';
+  color: white;
+}
+/* Hide scrollbar for cleaner look */
+::-webkit-scrollbar { width: 0px; background: transparent; }
+
+
 /* 1. SF Pro Display (Regular) */
 @font-face {
   font-family: 'SF Pro Display';
@@ -32,8 +40,6 @@
 /* Base Body Styles */
 body {
   @apply   text-[var(--text-dark)] min-h-screen;
-  background-image:
-    url('./assets/images/BG.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
